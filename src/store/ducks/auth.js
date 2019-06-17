@@ -1,19 +1,22 @@
-import firebase from 'firebase'
+import firebase from 'firebase' 
+import { Record } from 'immutable' 
 import { appName } from '../../config'
+
+const ReducerRecord = Record({
+  user: null,
+  error: null,
+  loading: false
+})
 
 export const moduleName = 'auth'
 export const SING_UP_REQUEST = `${appName}/${moduleName}/SING_UP_REQUEST`
 export const SING_UP_SUCCESS = `${appName}/${moduleName}/SING_UP_SUCCESS`
 export const SING_UP_ERROR = `${appName}/${moduleName}/SING_UP_ERROR`
 
-const defaultState = {
-  page: null,
-}
-
-const authReducer = (state = defaultState, action) => {
+const authReducer = (state = new ReducerRecord(), action) => {
   const {type} = action 
-  switch (type) {
-
+  switch(type) {
+    
     default:
       return state
   }

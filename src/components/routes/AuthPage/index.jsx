@@ -13,9 +13,7 @@ export class AuthPage extends Component {
     console.log('handleSingIn', values)
   }
 
-  handleSingUp = ({email, password}) => {
-    return this.props.singUp(email,password)
-  }
+  handleSingUp = ({email, password}) =>  this.props.singUp(email,password)
 
   render() {
     return (

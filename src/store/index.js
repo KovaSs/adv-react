@@ -13,11 +13,11 @@ const composeEnhancers =
     }) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk, routerMiddleware(history), logger),
+  applyMiddleware(logger, thunk, routerMiddleware(history)),
   // other store enhancers if any
 );
 
 const store = createStore(rootReducer, enhancer)
-window.store = store
+// window.store = store
 
 export default store

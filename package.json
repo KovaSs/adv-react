@@ -11,6 +11,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
+    "redux-form": "^8.2.4",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.3",
     "redux-thunk": "^2.3.0"
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   }
 }

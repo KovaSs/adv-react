@@ -1,6 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
 import rootReducer from './reduсers'
-import thunk from '../services/redux-thunk'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+import history from '../history'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -10,10 +13,11 @@ const composeEnhancers =
     }) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, routerMiddleware(history), logger),
   // other store enhancers if any
 );
 
 const store = createStore(rootReducer, enhancer)
+window.store = store
 
 export default store

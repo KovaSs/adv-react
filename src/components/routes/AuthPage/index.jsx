@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SingInForm from "../../auth/SingInForm";
 import SingUpForm from "../../auth/SingUpForm";
 import { Route, NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
+import {singUp} from '../../../store/ducks/auth'
 // import PropTypes from "prop-types";
 
 export class AuthPage extends Component {
@@ -11,8 +13,8 @@ export class AuthPage extends Component {
     console.log('handleSingIn', values)
   }
 
-  handleSingUp = values => {
-    console.log('handleSingUp', values)
+  handleSingUp = ({email, password}) => {
+    return this.props.singUp(email,password)
   }
 
   render() {
@@ -29,4 +31,10 @@ export class AuthPage extends Component {
   }
 }
 
-export default AuthPage;
+const putActionToProps = () => {
+  return {
+    singUp
+  }
+}
+
+export default connect(null, putActionToProps)(AuthPage);

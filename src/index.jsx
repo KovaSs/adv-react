@@ -4,6 +4,7 @@ import store from './store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
+import './config'
 
 const AppWrapper = () => {
   return ( 

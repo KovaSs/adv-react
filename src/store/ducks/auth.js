@@ -26,7 +26,7 @@ const authReducer = (state = new ReducerRecord(), action) => {
       return state
         .set('loading', false)
         .set('user', payload.user)
-        .set('error', false)
+        .set('error', null)
 
       case SING_UP_ERROR:
           return state

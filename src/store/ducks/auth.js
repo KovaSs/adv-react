@@ -1,5 +1,5 @@
 import firebase from 'firebase/app' 
-import 'firebase/auth' 
+import 'firebase/auth'
 import { Record } from 'immutable' 
 import { appName } from '../../config'
 
@@ -11,24 +11,26 @@ const ReducerRecord = Record({
 
 export const moduleName = 'auth'
 export const prefix = `${appName}/${moduleName}`
-export const SING_UP_REQUEST = `${prefix}/SING_UP_REQUEST`
-export const SING_UP_SUCCESS = `${prefix}/SING_UP_SUCCESS`
-export const SING_UP_ERROR = `${prefix}/SING_UP_ERROR`
+export const SIGN_UP_REQUEST = `${prefix}/SIGN_UP_REQUEST`
+export const SIGN_UP_SUCCESS = `${prefix}/SIGN_UP_SUCCESS`
+export const SIGN_UP_ERROR = `${prefix}/SIGN_UP_ERROR`
+export const SIGN_IN_REQUEST = `${prefix}/SIGN_IN_REQUEST`
+export const SIGN_IN_SUCCESS = `${prefix}/SIGN_IN_SUCCESS`
+export const SIGN_IN_ERROR = `${prefix}/SIGN_IN_ERROR`
 
 const authReducer = (state = new ReducerRecord(), action) => {
   const {type, payload, error} = action 
   switch(type) {
-    case SING_UP_REQUEST:
+    
+    case SIGN_UP_REQUEST:
       return state
         .set('loading', true)
-
-    case SING_UP_SUCCESS:
+    case SIGN_UP_SUCCESS:
       return state
         .set('loading', false)
         .set('user', payload.user)
         .set('error', null)
-
-      case SING_UP_ERROR:
+      case SIGN_UP_ERROR:
           return state
             .set('loading', false)
             .set('error', error)
@@ -38,19 +40,28 @@ const authReducer = (state = new ReducerRecord(), action) => {
   }
 }
 
-export const singUp = (email, password) => {
+export const signIn = (email, password) => {
+  return (dispatch) => {
+    dispatch({
+      type: SIGN_IN_SUCCESS,
+      payload: { user: {} }
+    })
+  }
+}
+
+export const signUp = (email, password) => {
   return dispatch => {
     dispatch({
-      type: SING_UP_REQUEST
+      type: SIGN_UP_REQUEST
     })
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then( user => dispatch({
-        type: SING_UP_SUCCESS,
+        type: SIGN_UP_SUCCESS,
         payload: {user}
       }))
       .catch(error => dispatch({
-        type: SING_UP_ERROR,
+        type: SIGN_UP_ERROR,
         error
       }))
   }

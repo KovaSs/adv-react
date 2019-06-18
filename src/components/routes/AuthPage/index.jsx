@@ -3,17 +3,15 @@ import SingInForm from "../../auth/SingInForm";
 import SingUpForm from "../../auth/SingUpForm";
 import { Route, NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
-import {singUp} from '../../../store/ducks/auth'
+import { signUp, signIn} from '../../../store/ducks/auth'
 // import PropTypes from "prop-types";
 
 export class AuthPage extends Component {
   // static propTypes = {};
 
-  handleSingIn = values => {
-    console.log('handleSingIn', values)
-  }
+  handleSingIn = ({email, password}) => this.props.signIn(email,password)
 
-  handleSingUp = ({email, password}) =>  this.props.singUp(email,password)
+  handleSingUp = ({email, password}) =>  this.props.signUp(email,password)
 
   render() {
     return (
@@ -31,7 +29,8 @@ export class AuthPage extends Component {
 
 const putActionToProps = () => {
   return {
-    singUp
+    signUp,
+    signIn,
   }
 }
 

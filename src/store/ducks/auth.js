@@ -22,6 +22,10 @@ const authReducer = (state = new ReducerRecord(), action) => {
   const {type, payload, error} = action 
   switch(type) {
     
+    case SIGN_IN_SUCCESS:
+      return state
+        .set('user', payload.user)
+
     case SIGN_UP_REQUEST:
       return state
         .set('loading', true)
@@ -44,7 +48,7 @@ export const signIn = (email, password) => {
   return (dispatch) => {
     dispatch({
       type: SIGN_IN_SUCCESS,
-      payload: { user: {} }
+      payload: { user: {[email]: password} }
     })
   }
 }

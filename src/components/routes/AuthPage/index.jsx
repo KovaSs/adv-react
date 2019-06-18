@@ -9,22 +9,21 @@ import { signUp, signIn} from '../../../store/ducks/auth'
 export class AuthPage extends Component {
   // static propTypes = {};
 
-  handleSingIn = ({email, password}) => this.props.signIn(email,password)
-
-  handleSingUp = ({email, password}) =>  this.props.signUp(email,password)
-
   render() {
     return (
       <div>
         <h1>Auth Page</h1>
-        <NavLink to="/auth/singin" activeStyle={{color : 'red'}}>sing in</NavLink>
-        <NavLink to="/auth/singup" activeStyle={{color : 'red'}}>sing up</NavLink>
+        <NavLink to="/auth/sign-in" activeStyle={{color : 'red'}}>sing in</NavLink>
+        <NavLink to="/auth/sign-up" activeStyle={{color : 'red'}}>sing up</NavLink>
 
-        <Route path="/auth/singin" render={() => <SingInForm onSubmit={this.handleSingIn} />} />
-        <Route path="/auth/singup" render={() => <SingUpForm onSubmit={this.handleSingUp} />} />
+        <Route path="/auth/sign-in" render={() => <SingInForm onSubmit={this.handleSingIn} />} />
+        <Route path="/auth/sign-up" render={() => <SingUpForm onSubmit={this.handleSingUp} />} />
       </div>
     );
   }
+
+  handleSingIn = ({email, password}) => this.props.signIn(email, password)
+  handleSingUp = ({email, password}) =>  this.props.signUp(email, password)
 }
 
 const putActionToProps = () => {

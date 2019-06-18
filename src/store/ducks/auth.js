@@ -71,4 +71,12 @@ export const signUp = (email, password) => {
   }
 }
 
+firebase.auth().onAuthStateChanged(user => {
+  const store = require('../index').default
+  store.dispatch({
+      type: SIGN_IN_SUCCESS,
+      payload: {user}
+  })
+})
+
 export default authReducer

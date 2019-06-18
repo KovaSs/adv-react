@@ -25,4 +25,4 @@ const putStateToProps = state => {
   }
 }
 
-export default connect(putStateToProps)(ProptectedRoute)
+export default connect(putStateToProps, null, null, {pure: false})(ProptectedRoute)

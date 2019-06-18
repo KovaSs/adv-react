@@ -8,7 +8,4 @@ export default combineReducers({
   [authModule] : authReducer,
   router: connectRouter(history),
   form: formReducer
-}) 
-
-
-
+})
